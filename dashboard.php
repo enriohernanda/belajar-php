@@ -1,5 +1,6 @@
 <?php
 session_start();
+session_regenerate_id();
 
 // Jika session "email" mati, maka kembali ke halaman 9
 if (empty($_SESSION['EMAIL'])) {

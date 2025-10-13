@@ -7,48 +7,49 @@
     <title>Document</title>
 </head>
 <style>
-    body {
-        margin: 0;
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background: #081818;
-    }
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #081818;
+}
 
-    form {
-        background-color: #04212C;
-        color: #fff;
-        padding: 2rem;
-        display: flex;
-        flex-direction: column;
-        border-radius: 20px;
-        height: 250px;
-        width: 350px;
-    }
+form {
+    background-color: #04212C;
+    color: #fff;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    height: 250px;
+    width: 350px;
+}
 
-    label {
-        font-weight: bold;
-    }
+label {
+    font-weight: bold;
+}
 
-    input {
-        border-radius: 8px;
-        height: 30px;
-    }
+input {
+    border-radius: 8px;
+    height: 30px;
+}
 
-    button {
-        margin-top: 1.5rem;
-        background-color: #054455;
-        color: #fff;
-        font-weight: bold;
-        padding: 8px;
-        border-radius: 10px;
-        cursor: pointer;
-    }
+button {
+    margin-top: 1.5rem;
+    background-color: #054455;
+    color: #fff;
+    font-weight: bold;
+    padding: 8px;
+    border-radius: 10px;
+    cursor: pointer;
+}
 </style>
 
 <?php
 session_start();
+session_regenerate_id();
 if (isset($_POST['login'])) {
     $inputkanEmail = htmlspecialchars($_POST["email"]);
     $inputkanPassword = htmlspecialchars($_POST["password"]);
