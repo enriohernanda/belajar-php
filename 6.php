@@ -25,3 +25,45 @@ echo panggilAku();
 // panggilAku("rio");
 // panggilAku("hernanda");
 // panggilAku();
+
+
+// array push
+$users = [
+    [
+        "id" => 1243,
+        "name" => "Roni"
+    ],
+    [
+        "id" => 54231,
+        "name" => "Susi"
+    ]
+];
+
+array_push($users, ["id" => 505, "name" => "Enrio"]);
+array_push($users, ["id" => 999, "name" => "Hernanda"]);
+
+foreach ($users as $user) {
+?>
+    <ul>
+        <li>ID USER: <?php $user['id'] ?></li>
+        <li>USERNAME: <?php echo $user['name'] ?></li>
+    </ul>
+<?php
+    // substr() = untuk memotong kalimat dengan menggunakan length
+    $string = "saya sedang belajar pemograman dasar pada Bahasa Pemograman PHP";
+    $substr = substr($string, 5);
+    echo $substr . "<br>";
+    // strlen()
+    $strlen = strlen($string);
+    echo $strlen . "<br>";
+    // str_word_count
+    $str_word_count = str_word_count($string);
+    echo $str_word_count . "<br>";
+    // ucwords
+    $ucwords = ucwords($string);
+    echo $ucwords . "<br>";
+    // ucfirst
+    $ucfirst = ucfirst($string);
+    echo $ucfirst . "<br>";
+}
+?>
