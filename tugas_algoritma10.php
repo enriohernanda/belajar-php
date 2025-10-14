@@ -7,13 +7,11 @@ if (isset($_POST["kirim"])) {
     } elseif ($angka == 0) {
         echo 0;
     } else {
-        echo rand(-1, -100);
+        echo rand(-100, -1);
     }
-
-    echo $angka;
 }
-
 ?>
+
 
 
 <!DOCTYPE html>

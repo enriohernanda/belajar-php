@@ -3,18 +3,12 @@ if (isset($_POST["kirim"])) {
     $angka = $_POST['angkaSembarang'];
 
     if ($angka % 2 == 0) {
-        $is_true = (bool) $angka;
-        echo $is_true . " " . $angka % 2 == 0;
+        echo "Angka $angka adalah genap (TRUE)";
     } else {
-        $is_false = (bool) $angka;
-        echo $is_false . " " . $angka % 2 == 1;
+        echo "Angka $angka adalah ganjil (FALSE)";
     }
-
-    echo $angka;
 }
-
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -22,12 +16,12 @@ if (isset($_POST["kirim"])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Cek Angka Genap atau Ganjil</title>
 </head>
 
 <body>
     <form action="" method="post">
-        <input type="text" name="angkaSembarang">
+        <input type="text" name="angkaSembarang" placeholder="Masukkan angka">
         <button type="submit" name="kirim">Lihat Angka</button>
     </form>
 </body>
