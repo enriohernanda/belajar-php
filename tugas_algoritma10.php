@@ -1,13 +1,17 @@
 <?php
 if (isset($_POST["kirim"])) {
-    $angka = $_POST['angkaSembarang'];
+    $angka = $_POST["angkaSembarang"];
 
-    if ($angka > 0) {
-        echo rand(1, 100);
-    } elseif ($angka == 0) {
-        echo 0;
+    if (is_string($angka)) {
+        echo "Harus masukkan angka!";
     } else {
-        echo rand(-100, -1);
+        if ($angka > 0) {
+            echo "Angka Positif";
+        } elseif ($angka == 0) {
+            echo "Angka Nol";
+        } else {
+            echo "Angka Negatif";
+        }
     }
 }
 ?>
