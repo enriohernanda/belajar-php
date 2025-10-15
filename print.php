@@ -1,60 +1,128 @@
 <?php
-$shops = [
+$datas = [
     [
-        "id" => 1,
-        "orderCode" => "AB-2025-01-02",
-        "orderDate" => "2025-01-02 08:17:11",
-        "orderAmount" => 56000,
-        "orderStatus" => "payment"
+        "Id" => 1,
+        "Order_Code" => "AB-2025-01-02",
+        "Order_Date" => "2025-01-02 08:17:11",
+        "Order_Amount" => 56000,
+        "Order_Status" => "payment",
+        "Actions" => "Print Struk"
     ],
     [
-        "id" => 2,
-        "orderCode" => "AC-2025-01-02",
-        "orderDate" => "2025-01-02 08:50:33",
-        "orderAmount" => 70000,
-        "orderStatus" => "payment"
+        "Id" => 2,
+        "Order_Code" => "AC-2025-01-02",
+        "Order_Date" => "2025-01-02 08:50:33",
+        "Order_Amount" => 70000,
+        "Order_Status" => "payment",
+        "Actions" => "Print Struk"
     ],
     [
-        "id" => 3,
-        "orderCode" => "AD-2025-01-02",
-        "orderDate" => "2025-01-02 10:50:33",
-        "orderAmount" => 0,
-        "orderStatus" => "order"
+        "Id" => 3,
+        "Order_Code" => "AD-2025-01-02",
+        "Order_Date" => "2025-01-02 10:50:33",
+        "Order_Amount" => 0,
+        "Order_Status" => "order",
+        "Actions" => "Print Struk"
     ],
     [
-        "id" => 4,
-        "orderCode" => "AE-2025-01-02",
-        "orderDate" => "2025-01-02 15:30:33",
-        "orderAmount" => 40000,
-        "orderStatus" => "payment"
+        "Id" => 4,
+        "Order_Code" => "AE-2025-01-02",
+        "Order_Date" => "2025-01-02 15:30:33",
+        "Order_Amount" => 40000,
+        "Order_Status" => "payment",
+        "Actions" => "Print Struk"
     ],
     [
-        "id" => 5,
-        "orderCode" => "AF-2025-01-04",
-        "orderDate" => "2025-01-04 15:30:33",
-        "orderAmount" => 0,
-        "orderStatus" => "order"
-    ],
+        "Id" => 5,
+        "Order_Code" => "AF-2025-01-02",
+        "Order_Date" => "2025-01-04 15:30:33",
+        "Order_Amount" => 0,
+        "Order_Status" => "order",
+        "Actions" => "Print Struk"
+    ]
 ];
-
-$id = $_GET['id'];
-
-if (!$id) {
-    die("Parameter ID tidak ditemukan.");
-}
-
-$resultOrder = array_filter($shops, function ($shop) use ($id) {
-    return $shop['id'] == $id;
+$order_details = [[
+    "id" => 1,
+    "order_id" => 1,
+    "product_name" => "Bakmie Jawa Jawa Jawa",
+    "qty" => 1,
+    "order_price" => 25000,
+    "order_subtotal" => 25000
+], [
+    "id" => 2,
+    "order_id" => 1,
+    "product_name" => "Teh Botol",
+    "qty" => 1,
+    "order_price" => 31000,
+    "order_subtotal" => 31000
+], [
+    "id" => 3,
+    "order_id" => 2,
+    "product_name" => "Nasi Goreng",
+    "qty" => 1,
+    "order_price" => 30000,
+    "order_subtotal" => 30000
+], [
+    "id" => 4,
+    "order_id" => 2,
+    "product_name" => "Kopi",
+    "qty" => 1,
+    "order_price" => 30000,
+    "order_subtotal" => 30000
+], [
+    "id" => 5,
+    "order_id" => 2,
+    "product_name" => "Kue",
+    "qty" => 1,
+    "order_price" => 10000,
+    "order_subtotal" => 10000
+], [
+    "id" => 6,
+    "order_id" => 3,
+    "product_name" => "Ketoprak",
+    "qty" => 1,
+    "order_price" => 20000,
+    "order_subtotal" => 20000
+], [
+    "id" => 7,
+    "order_id" => 3,
+    "product_name" => "Teh Botol",
+    "qty" => 1,
+    "order_price" => 31000,
+    "order_subtotal" => 31000
+], [
+    "id" => 8,
+    "order_id" => 4,
+    "product_name" => "Air Mineral",
+    "qty" => 1,
+    "order_price" => 40000,
+    "order_subtotal" => 40000
+], [
+    "id" => 9,
+    "order_id" => 5,
+    "product_name" => "Air Tajin",
+    "qty" => 1,
+    "order_price" => 7000,
+    "order_subtotal" => 7000
+]];
+//----------------------------------------------
+//select * form datas where Id = $idP
+//* => all
+$resultDatas = array_filter($datas, function ($data) {
+    return $data['Id'] == $_GET['idPrint'];
 });
+$index = array_search($_GET['idPrint'], array_column($datas, 'Id'));
+// var_dump($resultOrder[3]['?Order_Code?']);
 
-$resultOrder = array_values($resultOrder);
-
-if (count($resultOrder) === 0) {
-    die("Order tidak ditemukan.");
-}
-
-$order = $resultOrder[0];
+//----------------------------------------------
+//select * form order_details where, order_id = $_GET['idPrint']
+$resultOrDet = array_filter($order_details, function ($ordet) {
+    return $ordet['order_id'] == $_GET['idPrint'];
+});
+$indexOrDet = array_search($_GET['idPrint'], array_column($order_details, 'order_id'));
+// var_dump($resultDatas[$index]['']);
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -62,70 +130,71 @@ $order = $resultOrder[0];
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Print Receipt</title>
+    <title>Document</title>
     <style>
-    @media print {
-        body {
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 12px;
-        }
+        @media print {
+            body {
+                font-family: 'Courier New', Courier, monospace;
+                font-size: 12px;
+            }
 
-        .table-bordered,
-        .table th,
-        .table td {
-            display: none;
-        }
+            .table-bordered,
+            .table th,
+            .table td {
+                display: none;
+            }
 
-        #receipt-container {
-            display: block;
-            width: 58mm;
-            margin: 0;
-            padding: 5px;
-        }
+            #receipt-container {
+                display: block;
+                width: 58mm;
+                margin: 0;
+                padding: 5px;
+            }
 
-        #receipt-container * {
-            visibility: visible;
-        }
+            #receipt-container * {
+                visibility: visible;
+            }
 
-        #receipt-container table {
-            width: 100%;
-            border-collapse: collapse;
-        }
+            #receipt-container table {
+                width: 100%;
+                border-collapse: collapse;
+            }
 
-        #receipt-container th,
-        #receipt-container td {
-            padding: 1px 0;
-            border: none !important;
-        }
+            #receipt-container th,
+            #receipt-container td {
+                padding: 1px 0;
+                border: none !important;
+            }
 
-        #receipt-container h5,
-        #receipt-container p {
-            text-align: center;
-            margin: 0;
-        }
+            #receipt-container h5,
+            #receipt-container p {
+                text-align: center;
+                margin: 0;
+            }
 
-        .text-center {
-            text-align: center;
-        }
+            .text-center {
+                text-align: center;
+            }
 
-        .text-right {
-            text-align: right;
-        }
+            .text-right {
+                text-align: right;
+            }
 
-        .text-bold {
-            font-weight: bold;
+            .text-bold {
+                font-weight: bold;
+            }
         }
-    }
     </style>
 </head>
 
 <body>
-    <div id="receipt-container">
+
+    <div class="receipt-container">
         <h5 class="text-center">Receipt</h5>
         <p class="text-center">Resto Chrispy</p>
         <p>-------------------------------------</p>
-        <p>Order Code : <?= $order['orderCode'] ?></p>
-        <p>Tanggal : <?= $order['orderDate'] ?></p>
+        <p>Order Code :<?php echo $resultDatas[$index]['Order_Date'] ?></p>
+        <p>Tanggal :<?php echo $resultDatas[$index]['Order_Date'] ?></p>
         <p>-------------------------------------</p>
         <table>
             <thead>
@@ -137,6 +206,19 @@ $order = $resultOrder[0];
                 </tr>
             </thead>
             <tbody>
+                <?php
+                foreach ($resultOrDet as $value) {
+                ?>
+                    <tr>
+                        <td><?php echo $value['product_name'] ?></td>
+                        <td class="text-right"><?php echo $value['qty'] ?></td>
+                        <td class="text-right"><?php echo $value['order_price'] ?></td>
+                        <td class="text-right"><?php echo $value['order_subtotal'] ?></td>
+                    </tr>
+                <?php
+                }
+                ?>
+
                 <tr>
                     <td></td>
                     <td class="text-right"></td>
@@ -147,16 +229,15 @@ $order = $resultOrder[0];
         </table>
         <p>-------------------------------------</p>
         <div class="text-center">
-            <pre>Total:     Rp. <?= number_format($order['orderAmount'], 2, ",", ".") ?></pre>
+            <pre>Total:     Rp. </pre>
             <pre>Bayar:     Rp. </pre>
             <pre>Kembalian  Rp. </pre>
         </div>
         <p>-------------------------------------</p>
         <p class="text-center text-bold">Terimakasih Telah Berbelanja!</p>
     </div>
-
     <script>
-    window.print();
+        window.print();
     </script>
 </body>
 
